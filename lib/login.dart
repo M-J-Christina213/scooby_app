@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart'; // <-- import MainPage
-
-void main() {
-  runApp(const MainApp());
-}
-
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
-    );
-  }
-}
+import 'main.dart'; // <-- for MainPage
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});

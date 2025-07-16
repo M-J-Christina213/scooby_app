@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'login.dart';  // import your LoginScreen
 
 void main() {
   runApp(PetWelfareApp());
@@ -13,8 +14,8 @@ class PetWelfareApp extends StatelessWidget {
         primaryColor: Color(0xFF9370DB), // medium purple
         scaffoldBackgroundColor: Color(0xFFE6E6FA), // lavender background
       ),
-      home: MainPage(),
-      debugShowCheckedModeBanner: false,
+       debugShowCheckedModeBanner: false,
+      home: LoginScreen(), // <- start with LoginScreen
     );
   }
 }
