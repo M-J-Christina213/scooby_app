@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'pet_profile.dart';
 import 'login.dart';
-import 'pet_owner_data.dart'; // Import the user profile data
+import 'pet_owner_data.dart'; 
+import 'services_page.dart'; 
 
 void main() {
   runApp(PetWelfareApp());
@@ -17,7 +18,7 @@ class PetWelfareApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFE6E6FA),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: LoginScreen(), // Can change to MainPage() if login not ready
     );
   }
 }
@@ -32,7 +33,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     HomePage(),
-    ServicesPage(),
+    ServicesPage(), // ✅ Using the real one from services_page.dart
     DonationAdoptionPage(),
     CommunityPage(),
   ];
@@ -42,7 +43,7 @@ class _MainPageState extends State<MainPage> {
       context,
       MaterialPageRoute(builder: (context) => PetOwnerProfilePage()),
     ).then((_) {
-      setState(() {}); // Refresh after profile update
+      setState(() {}); // Refresh name if profile updated
     });
   }
 
@@ -99,13 +100,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(child: Text('Home Page', style: TextStyle(fontSize: 24)));
-  }
-}
-
-class ServicesPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Center(child: Text('Services Page', style: TextStyle(fontSize: 24)));
   }
 }
 
