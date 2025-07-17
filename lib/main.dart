@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'pet_profile.dart';
 import 'login.dart';
+import 'pet_owner_data.dart'; // Import the user profile data
 
 void main() {
   runApp(PetWelfareApp());
@@ -38,12 +40,16 @@ class _MainPageState extends State<MainPage> {
   void _onAvatarTap() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => UserDetailsPage()),
-    );
+      MaterialPageRoute(builder: (context) => PetOwnerProfilePage()),
+    ).then((_) {
+      setState(() {}); // Refresh after profile update
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final userName = PetOwnerData.name.isNotEmpty ? PetOwnerData.name : "User";
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xFFC9A0DC),
@@ -59,7 +65,7 @@ class _MainPageState extends State<MainPage> {
           ),
         ),
         title: Text(
-          'Hello, User',
+          'Hello, $userName',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -114,18 +120,5 @@ class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(child: Text('Community Page', style: TextStyle(fontSize: 24)));
-  }
-}
-
-class UserDetailsPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('User Details'),
-        backgroundColor: Color(0xFF9370DB),
-      ),
-      body: Center(child: Text('User Details Page', style: TextStyle(fontSize: 24))),
-    );
   }
 }
