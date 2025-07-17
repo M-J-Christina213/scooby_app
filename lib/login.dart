@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'main.dart'; // <-- for MainPage
+import 'main.dart';
+import 'register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -24,11 +25,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 30),
             const Text(
               'Login',
-              style: TextStyle(
-                fontSize: 35,
-                color: Colors.purpleAccent,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 35, color: Colors.purpleAccent, fontWeight: FontWeight.bold),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
@@ -37,12 +34,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   children: [
-                    _buildTextField(
-                        'Email', Icons.email, TextInputType.emailAddress),
+                    _buildTextField('Email', Icons.email, TextInputType.emailAddress),
                     const SizedBox(height: 30),
-                    _buildTextField(
-                        'Password', Icons.password, TextInputType.text,
-                        isPassword: true),
+                    _buildTextField('Password', Icons.password, TextInputType.text, isPassword: true),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
@@ -52,26 +46,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Login Successful'),
-                                ),
+                                const SnackBar(content: Text('Login Successful')),
                               );
-
-                              // Navigate to MainPage
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(
-                                    builder: (context) => MainPage()),
+                                MaterialPageRoute(builder: (context) => MainPage()),
                               );
                             }
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: Colors.purple,
-                          ),
-                          child: const Text(
-                            'Login',
-                            style: TextStyle(color: Colors.white),
-                          ),
+                          style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                          child: const Text('Login', style: TextStyle(color: Colors.white)),
                         ),
                       ),
                     ),
@@ -81,19 +65,11 @@ class _LoginScreenState extends State<LoginScreen> {
                       child: SizedBox(
                         width: double.infinity,
                         child: OutlinedButton.icon(
-                          icon: Image.asset(
-                            'assets/images/google_logo.png',
-                            height: 24,
-                            width: 24,
-                          ),
-                          label: const Text(
-                            'Login with Google',
-                            style: TextStyle(color: Colors.black),
-                          ),
+                          icon: Image.asset('assets/images/google_logo.png', height: 24, width: 24),
+                          label: const Text('Login with Google', style: TextStyle(color: Colors.black)),
                           onPressed: () {
                             ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                  content: Text('Google login clicked')),
+                              const SnackBar(content: Text('Google login clicked')),
                             );
                           },
                           style: OutlinedButton.styleFrom(
@@ -104,7 +80,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 10),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => RegisterScreen()),
+                        );
+                      },
+                      child: Text(
+                        "Don't have an account? Register",
+                        style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                      ),
+                    ),
                   ],
                 ),
               ),
@@ -115,9 +103,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildTextField(String label, IconData icon,
-      TextInputType keyboardType,
-      {bool isPassword = false}) {
+  Widget _buildTextField(String label, IconData icon, TextInputType keyboardType, {bool isPassword = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(

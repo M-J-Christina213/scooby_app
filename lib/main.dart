@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login.dart';  // import your LoginScreen
+import 'login.dart';
 
 void main() {
   runApp(PetWelfareApp());
@@ -11,11 +11,11 @@ class PetWelfareApp extends StatelessWidget {
     return MaterialApp(
       title: 'Pet Welfare App',
       theme: ThemeData(
-        primaryColor: Color(0xFF9370DB), // medium purple
-        scaffoldBackgroundColor: Color(0xFFE6E6FA), // lavender background
+        primaryColor: Color(0xFF9370DB),
+        scaffoldBackgroundColor: Color(0xFFE6E6FA),
       ),
-       debugShowCheckedModeBanner: false,
-      home: LoginScreen(), // <- start with LoginScreen
+      debugShowCheckedModeBanner: false,
+      home: LoginScreen(),
     );
   }
 }
@@ -46,16 +46,14 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFFC9A0DC), // Wisteria at the top
+        backgroundColor: Color(0xFFC9A0DC),
         elevation: 0,
         leading: GestureDetector(
           onTap: _onAvatarTap,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
-              backgroundImage: NetworkImage(
-                'https://i.pravatar.cc/150?img=3',
-              ),
+              backgroundImage: NetworkImage('https://i.pravatar.cc/150?img=3'),
               radius: 20,
             ),
           ),
@@ -63,7 +61,7 @@ class _MainPageState extends State<MainPage> {
         title: Text(
           'Hello, User',
           style: TextStyle(
-            color: Colors.white, // contrast on Wisteria
+            color: Colors.white,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -72,7 +70,7 @@ class _MainPageState extends State<MainPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Color(0xFFC9A0DC), // Wisteria at the bottom too
+        backgroundColor: Color(0xFFC9A0DC),
         selectedItemColor: Colors.white,
         unselectedItemColor: Colors.white70,
         onTap: (index) {
@@ -81,75 +79,41 @@ class _MainPageState extends State<MainPage> {
           });
         },
         items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.pets),
-            label: 'Services',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.volunteer_activism),
-            label: 'Donation',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.group),
-            label: 'Community',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.pets), label: 'Services'),
+          BottomNavigationBarItem(icon: Icon(Icons.volunteer_activism), label: 'Donation'),
+          BottomNavigationBarItem(icon: Icon(Icons.group), label: 'Community'),
         ],
       ),
     );
   }
 }
 
-// ================= Pages =================
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Home Page',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
+    return Center(child: Text('Home Page', style: TextStyle(fontSize: 24)));
   }
 }
 
 class ServicesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Services Page',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
+    return Center(child: Text('Services Page', style: TextStyle(fontSize: 24)));
   }
 }
 
 class DonationAdoptionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Donation & Adoption Page',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
+    return Center(child: Text('Donation & Adoption Page', style: TextStyle(fontSize: 24)));
   }
 }
 
 class CommunityPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Community Page',
-        style: TextStyle(fontSize: 24),
-      ),
-    );
+    return Center(child: Text('Community Page', style: TextStyle(fontSize: 24)));
   }
 }
 
@@ -159,14 +123,9 @@ class UserDetailsPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('User Details'),
-        backgroundColor: Color(0xFF9370DB), // medium purple
+        backgroundColor: Color(0xFF9370DB),
       ),
-      body: Center(
-        child: Text(
-          'User Details Page',
-          style: TextStyle(fontSize: 24),
-        ),
-      ),
+      body: Center(child: Text('User Details Page', style: TextStyle(fontSize: 24))),
     );
   }
 }
