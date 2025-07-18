@@ -11,7 +11,6 @@ class RegisterScreen extends StatefulWidget {
 
 class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
-  String? _selectedRole;
 
   @override
   Widget build(BuildContext context) {
@@ -49,38 +48,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     _buildTextField('Password', Icons.password, TextInputType.visiblePassword),
                     const SizedBox(height: 30),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15),
-                      child: DropdownButtonFormField<String>(
-                        decoration: const InputDecoration(
-                          labelText: 'Role',
-                          border: OutlineInputBorder(),
-                          prefixIcon: Icon(Icons.account_circle),
-                        ),
-                        value: _selectedRole,
-                        items: [
-                          'Vet/Groomer',
-                          'Community Member',
-                          'Adoption Center',
-                          'Donor',
-                          'Shelter/NGO',
-                        ].map((role) {
-                          return DropdownMenuItem<String>(
-                            value: role,
-                            child: Text(role),
-                          );
-                        }).toList(),
-                        onChanged: (String? newValue) {
-                          setState(() {
-                            _selectedRole = newValue;
-                          });
-                        },
-                        validator: (value) {
-                          return value == null || value.isEmpty ? 'Please select a role' : null;
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
                       child: SizedBox(
                         width: double.infinity,
@@ -91,18 +58,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 const SnackBar(content: Text('Processing Registration...')),
                               );
 
-                              if (_selectedRole == 'Vet/Groomer') {
-                                Navigator.pushReplacement(
-                                  context,
-                                  MaterialPageRoute(builder: (context) => const VetGroomerScreen()),
-                                );
-                              } else {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Only Vet/Groomer role is supported in Sprint 1'),
-                                  ),
-                                );
-                              }
+                              Navigator.pushReplacement(
+                                context,
+                                MaterialPageRoute(builder: (context) => const VetGroomerScreen()),
+                              );
                             }
                           },
                           style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),

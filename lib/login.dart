@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'register.dart';
+import 'service_provider_register.dart'; // <-- New Import
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -17,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login Screen'),
-        backgroundColor: Colors.purple,
+        backgroundColor: const Color.fromARGB(255, 213, 119, 230),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -54,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               );
                             }
                           },
-                          style: ElevatedButton.styleFrom(backgroundColor: Colors.purple),
+                          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 224, 118, 243)),
                           child: const Text('Login', style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -88,8 +89,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           MaterialPageRoute(builder: (context) => RegisterScreen()),
                         );
                       },
-                      child: Text(
-                        "Don't have an account? Register",
+                      child: const Text(
+                        "Register as Pet Owner",
+                        style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const ServiceProviderRegisterScreen()),
+                        );
+                      },
+                      child: const Text(
+                        "Register as Service Provider",
                         style: TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold),
                       ),
                     ),
