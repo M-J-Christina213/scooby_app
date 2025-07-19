@@ -95,10 +95,10 @@ class _ServiceProviderRegisterScreenState extends State<ServiceProviderRegisterS
                       _showConfirmationDialog();
                     }
                   },
-                  child: const Text('Register'),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromARGB(255, 231, 172, 241),
                   ),
+                  child: const Text('Register'),
                 ),
               ],
             ),

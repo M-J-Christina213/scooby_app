@@ -4,6 +4,8 @@ import 'grooming_page.dart';
 import 'pet_sitters_page.dart';
 
 class ServicesPage extends StatelessWidget {
+  const ServicesPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ListView(

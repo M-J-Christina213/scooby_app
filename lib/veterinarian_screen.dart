@@ -31,10 +31,10 @@ class _VeterinarianScreenState extends State<VeterinarianScreen> {
         const SnackBar(content: Text('Veterinarian details saved!')),
       );
 
-      print('Name: ${_nameController.text}');
-      print('Description: ${_descController.text}');
-      print('Price: ${_priceController.text}');
-      print('Image path: ${_image?.path}');
+      'Name: ${_nameController.text}';
+      'Description: ${_descController.text}';
+      'Price: ${_priceController.text}';
+      'Image path: ${_image?.path}';
     }
   }
 

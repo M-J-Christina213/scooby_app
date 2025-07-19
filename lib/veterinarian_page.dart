@@ -35,6 +35,8 @@ class VeterinarianPage extends StatelessWidget {
     },
   ];
 
+ VeterinarianPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +48,9 @@ class VeterinarianPage extends StatelessWidget {
         padding: const EdgeInsets.all(16.0),
         children: [
           _sectionTitle("Nearby Veterinarian"),
-          ...vets.take(2).map((vet) => _vetCard(context, vet)).toList(),
+          ...vets.take(2).map((vet) => _vetCard(context, vet)),
           _sectionTitle("Recommended Veterinarian"),
-          ...vets.skip(2).map((vet) => _vetCard(context, vet)).toList(),
+          ...vets.skip(2).map((vet) => _vetCard(context, vet)),
         ],
       ),
     );

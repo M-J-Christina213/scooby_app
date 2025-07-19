@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'add_pet.dart';
 import 'pet_owner_data.dart'; // Import the shared data
@@ -66,7 +68,7 @@ class _PetOwnerProfilePageState extends State<PetOwnerProfilePage> {
                   children: [
                     _buildButton("Save", const Color.fromRGBO(166, 133, 255, 1), _saveProfile),
                     _buildButton("Edit", Color.fromRGBO(166, 133, 255, 1), () {
-                      print("Edit profile tapped");
+                      "Edit profile tapped";
                     }),
                     ElevatedButton(
                       onPressed: () {

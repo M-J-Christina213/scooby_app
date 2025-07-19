@@ -45,12 +45,12 @@ class _AddPetScreenState extends State<AddPetScreen> {
 
   void _handleEdit() {
     // Example logic
-    print('Name: ${nameController.text}');
-    print('Age: ${ageController.text}');
-    print('Medical History: ${medicalHistoryController.text}');
-    print('Height: ${heightController.text}');
-    print('Weight: ${weightController.text}');
-    print('More Info: ${moreInfoController.text}');
+    'Name: ${nameController.text}';
+    'Age: ${ageController.text}';
+    'Medical History: ${medicalHistoryController.text}';
+    'Height: ${heightController.text}';
+    'Weight: ${weightController.text}';
+    'More Info: ${moreInfoController.text}';
 
     // Add form validation or submission logic here
   }
