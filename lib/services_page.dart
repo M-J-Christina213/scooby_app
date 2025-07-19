@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'veterinarian_page.dart';
+import 'grooming_page.dart';
+import 'pet_sitters_page.dart';
 
 class ServicesPage extends StatelessWidget {
   @override
@@ -111,38 +114,6 @@ class ServiceCard extends StatelessWidget {
               )),
         ],
       ),
-    );
-  }
-}
-
-// --------------------- Placeholder Pages ---------------------
-
-class VeterinarianPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Veterinarian Services')),
-      body: Center(child: Text('Details for Veterinarian')),
-    );
-  }
-}
-
-class GroomingPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Grooming Services')),
-      body: Center(child: Text('Details for Grooming')),
-    );
-  }
-}
-
-class PetSittersPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('Pet Sitters Services')),
-      body: Center(child: Text('Details for Pet Sitters')),
     );
   }
 }
