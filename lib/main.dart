@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'pet_profile.dart';
 import 'login.dart';
-import 'pet_owner_data.dart'; 
-import 'services_page.dart'; 
+import 'pet_owner_data.dart';
+import 'services_page.dart';
+import 'pet_data.dart'; // ✅ Import pet data
 
 void main() {
   runApp(PetWelfareApp());
@@ -18,7 +19,7 @@ class PetWelfareApp extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFFE6E6FA),
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(), // Can change to MainPage() if login not ready
+      home: LoginScreen(),
     );
   }
 }
@@ -33,7 +34,7 @@ class _MainPageState extends State<MainPage> {
 
   final List<Widget> _pages = [
     HomePage(),
-    ServicesPage(), // ✅ Using the real one from services_page.dart
+    ServicesPage(),
     DonationAdoptionPage(),
     CommunityPage(),
   ];
@@ -96,10 +97,48 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    setState(() {}); // Refresh pet list
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text('Home Page', style: TextStyle(fontSize: 24)));
+    return ListView(
+      padding: EdgeInsets.all(16),
+      children: [
+        Text('Home Page', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        SizedBox(height: 20),
+        ...PetData.pets.map((pet) => Card(
+              color: Color(0xFFF3E5F5),
+              margin: EdgeInsets.only(bottom: 12),
+              child: ListTile(
+                title: Text(pet.name, style: TextStyle(fontWeight: FontWeight.bold)),
+                subtitle: Text(
+                  'Age: ${pet.age} | Height: ${pet.height} cm | Weight: ${pet.weight} kg\n'
+                  'Medical: ${pet.medicalHistory}\nMore Info: ${pet.moreInfo}',
+                ),
+                isThreeLine: true,
+              ),
+            )),
+        if (PetData.pets.isEmpty)
+          Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Text(
+              'No pets added yet.\nClick "Add Pet" in profile to get started!',
+              style: TextStyle(fontSize: 16, color: Colors.grey),
+              textAlign: TextAlign.center,
+            ),
+          ),
+      ],
+    );
   }
 }
 

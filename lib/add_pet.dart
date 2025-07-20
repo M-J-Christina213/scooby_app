@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const AddPetApp());
-}
-
-class AddPetApp extends StatelessWidget {
-  const AddPetApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Add Pet',
-      debugShowCheckedModeBanner: false,
-      home: AddPetScreen(),
-    );
-  }
-}
+import 'pet_data.dart';
 
 class AddPetScreen extends StatefulWidget {
   const AddPetScreen({super.key});
@@ -44,15 +28,18 @@ class _AddPetScreenState extends State<AddPetScreen> {
   }
 
   void _handleEdit() {
-    // Example logic
-    print('Name: ${nameController.text}');
-    print('Age: ${ageController.text}');
-    print('Medical History: ${medicalHistoryController.text}');
-    print('Height: ${heightController.text}');
-    print('Weight: ${weightController.text}');
-    print('More Info: ${moreInfoController.text}');
+    final newPet = Pet(
+      name: nameController.text,
+      age: ageController.text,
+      medicalHistory: medicalHistoryController.text,
+      height: heightController.text,
+      weight: weightController.text,
+      moreInfo: moreInfoController.text,
+    );
 
-    // Add form validation or submission logic here
+    PetData.pets.add(newPet);
+
+    Navigator.pop(context, true); // ✅ Go back and signal success
   }
 
   @override
@@ -93,7 +80,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
                     backgroundColor: Colors.purpleAccent,
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
                   ),
-                  child: const Text('Edit', style: TextStyle(fontSize: 16)),
+                  child: const Text('Save Pet', style: TextStyle(fontSize: 16)),
                 ),
               ],
             ),

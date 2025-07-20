@@ -69,11 +69,15 @@ class _PetOwnerProfilePageState extends State<PetOwnerProfilePage> {
                       print("Edit profile tapped");
                     }),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
+                      onPressed: () async {
+                        final result = await Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => AddPetScreen()),
                         );
+
+                        if (result == true) {
+                          Navigator.pop(context); // Return to HomePage to refresh
+                        }
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Color(0xFFA685FF),
