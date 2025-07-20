@@ -1,10 +1,9 @@
-// pet_data.dart
 class Pet {
   final String name;
-  final String age;
+  final int age;
   final String medicalHistory;
-  final String height;
-  final String weight;
+  final double height;
+  final double weight;
   final String moreInfo;
 
   Pet({

@@ -9,34 +9,26 @@ class AddPetScreen extends StatefulWidget {
 }
 
 class _AddPetScreenState extends State<AddPetScreen> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController ageController = TextEditingController();
-  final TextEditingController medicalHistoryController = TextEditingController();
-  final TextEditingController heightController = TextEditingController();
-  final TextEditingController weightController = TextEditingController();
-  final TextEditingController moreInfoController = TextEditingController();
-
-  @override
-  void dispose() {
-    nameController.dispose();
-    ageController.dispose();
-    medicalHistoryController.dispose();
-    heightController.dispose();
-    weightController.dispose();
-    moreInfoController.dispose();
-    super.dispose();
-  }
+  final nameController = TextEditingController();
+  final ageController = TextEditingController();
+  final medicalHistoryController = TextEditingController();
+  final heightController = TextEditingController();
+  final weightController = TextEditingController();
+  final moreInfoController = TextEditingController();
 
   void _handleEdit() {
-    // Example logic
-    print('Name: ${nameController.text}');
-    print('Age: ${ageController.text}');
-    print('Medical History: ${medicalHistoryController.text}');
-    print('Height: ${heightController.text}');
-    print('Weight: ${weightController.text}');
-    print('More Info: ${moreInfoController.text}');
+    final newPet = Pet(
+      name: nameController.text,
+      age: int.tryParse(ageController.text) ?? 0,
+      medicalHistory: medicalHistoryController.text,
+      height: double.tryParse(heightController.text) ?? 0.0,
+      weight: double.tryParse(weightController.text) ?? 0.0,
+      moreInfo: moreInfoController.text,
+    );
 
-    // Add form validation or submission logic here
+    PetData.pets.insert(0, newPet);
+    print('Pet added: ${newPet.name}');
+    Navigator.pop(context);
   }
 
   @override
@@ -55,29 +47,19 @@ class _AddPetScreenState extends State<AddPetScreen> {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                const Text(
-                  'Add Pet',
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                ),
+                const Text('Add Pet', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 20),
-                _buildTextField(label: 'Name', controller: nameController),
-                _buildTextField(label: 'Age', controller: ageController, keyboardType: TextInputType.number),
-                _buildTextField(label: 'Medical History', controller: medicalHistoryController),
-                _buildTextField(label: 'Height (cm)', controller: heightController, keyboardType: TextInputType.number),
-                _buildTextField(label: 'Weight (kg)', controller: weightController, keyboardType: TextInputType.number),
-                _buildTextField(label: 'More Info', controller: moreInfoController),
+                _buildTextField('Name', nameController),
+                _buildTextField('Age', ageController, TextInputType.number),
+                _buildTextField('Medical History', medicalHistoryController),
+                _buildTextField('Height (cm)', heightController, TextInputType.number),
+                _buildTextField('Weight (kg)', weightController, TextInputType.number),
+                _buildTextField('More Info', moreInfoController),
                 const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: _handleEdit,
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.purpleAccent,
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
-                  ),
-                  child: const Text('Save Pet', style: TextStyle(fontSize: 16)),
+                  style: ElevatedButton.styleFrom(backgroundColor: Colors.purpleAccent),
+                  child: const Text('Save Pet'),
                 ),
               ],
             ),
@@ -87,29 +69,19 @@ class _AddPetScreenState extends State<AddPetScreen> {
     );
   }
 
-  Widget _buildTextField({
-    required String label,
-    required TextEditingController controller,
-    TextInputType keyboardType = TextInputType.text,
-  }) {
+  Widget _buildTextField(String label, TextEditingController controller, [TextInputType type = TextInputType.text]) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          label,
-          style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.black87),
-        ),
+        Text(label, style: const TextStyle(fontWeight: FontWeight.bold)),
         const SizedBox(height: 5),
         TextField(
           controller: controller,
-          keyboardType: keyboardType,
+          keyboardType: type,
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(5),
-            ),
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
           ),
         ),
         const SizedBox(height: 15),
