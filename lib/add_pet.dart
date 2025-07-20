@@ -28,18 +28,15 @@ class _AddPetScreenState extends State<AddPetScreen> {
   }
 
   void _handleEdit() {
-    final newPet = Pet(
-      name: nameController.text,
-      age: ageController.text,
-      medicalHistory: medicalHistoryController.text,
-      height: heightController.text,
-      weight: weightController.text,
-      moreInfo: moreInfoController.text,
-    );
+    // Example logic
+    print('Name: ${nameController.text}');
+    print('Age: ${ageController.text}');
+    print('Medical History: ${medicalHistoryController.text}');
+    print('Height: ${heightController.text}');
+    print('Weight: ${weightController.text}');
+    print('More Info: ${moreInfoController.text}');
 
-    PetData.pets.add(newPet);
-
-    Navigator.pop(context, true); // ✅ Go back and signal success
+    // Add form validation or submission logic here
   }
 
   @override

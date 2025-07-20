@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class GroomingDetailPage extends StatelessWidget {
   final Map<String, dynamic> groomer;
 
-  const GroomingDetailPage({required this.groomer});
+  const GroomingDetailPage({super.key, required this.groomer});
 
   @override
   Widget build(BuildContext context) {

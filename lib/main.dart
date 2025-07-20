@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 import 'pet_profile.dart';
 import 'login.dart';
@@ -10,6 +12,8 @@ void main() {
 }
 
 class PetWelfareApp extends StatelessWidget {
+  const PetWelfareApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,6 +29,8 @@ class PetWelfareApp extends StatelessWidget {
 }
 
 class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
   @override
   _MainPageState createState() => _MainPageState();
 }
@@ -97,18 +103,7 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    setState(() {}); // Refresh pet list
-  }
-
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
@@ -143,6 +138,8 @@ class _HomePageState extends State<HomePage> {
 }
 
 class DonationAdoptionPage extends StatelessWidget {
+  const DonationAdoptionPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(child: Text('Donation & Adoption Page', style: TextStyle(fontSize: 24)));
@@ -150,6 +147,8 @@ class DonationAdoptionPage extends StatelessWidget {
 }
 
 class CommunityPage extends StatelessWidget {
+  const CommunityPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Center(child: Text('Community Page', style: TextStyle(fontSize: 24)));

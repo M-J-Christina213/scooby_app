@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class VeterinarianDetailPage extends StatelessWidget {
   final Map<String, dynamic> vet;
 
-  const VeterinarianDetailPage({required this.vet});
+  const VeterinarianDetailPage({super.key, required this.vet});
 
   @override
   Widget build(BuildContext context) {

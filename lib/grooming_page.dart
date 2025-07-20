@@ -35,6 +35,8 @@ class GroomingPage extends StatelessWidget {
     },
   ];
 
+  GroomingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -31,10 +31,10 @@ class _PetSitterScreenState extends State<PetSitterScreen> {
         const SnackBar(content: Text('Pet Sitter details saved!')),
       );
 
-      print('Name: ${_nameController.text}');
-      print('Description: ${_descController.text}');
-      print('Price: ${_priceController.text}');
-      print('Image path: ${_image?.path}');
+      'Name: ${_nameController.text}';
+      'Description: ${_descController.text}';
+      'Price: ${_priceController.text}';
+      'Image path: ${_image?.path}';
     }
   }
 
