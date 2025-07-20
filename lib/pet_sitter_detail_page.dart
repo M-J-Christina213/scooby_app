@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 
-class VeterinarianDetailPage extends StatelessWidget {
-  final Map<String, dynamic> vet;
+class PetSitterDetailPage extends StatelessWidget {
+  final Map<String, dynamic> sitter;
 
-  const VeterinarianDetailPage({super.key, required this.vet});
+  const PetSitterDetailPage({super.key, required this.sitter});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
-        title: Text(vet['name']),
+        backgroundColor: Colors.teal,
+        title: Text(sitter['name']),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Top image section
+            // Top image
             Container(
               width: double.infinity,
               child: Image.asset(
-                vet['image'],
+                sitter['image'],
                 height: 240,
                 fit: BoxFit.cover,
               ),
@@ -46,14 +46,14 @@ class VeterinarianDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    vet['name'],
+                    sitter['name'],
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    vet['qualification'],
+                    sitter['speciality'],
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[700],
@@ -61,13 +61,12 @@ class VeterinarianDetailPage extends StatelessWidget {
                   ),
                   SizedBox(height: 10),
 
-                  // Rating & Schedule
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 20),
                       SizedBox(width: 4),
                       Text(
-                        '${vet['rating']} (${vet['reviews']} reviews)',
+                        '${sitter['rating']} (${sitter['reviews']} reviews)',
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -75,34 +74,32 @@ class VeterinarianDetailPage extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.schedule, size: 20, color: Colors.deepPurple),
+                      Icon(Icons.schedule, size: 20, color: Colors.teal),
                       SizedBox(width: 6),
                       Text(
-                        vet['schedule'],
+                        sitter['schedule'],
                         style: TextStyle(fontSize: 14, color: Colors.black87),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: 12),
-
-                  // Fee and Clinic
-                  Row(
-                    children: [
-                      Icon(Icons.monetization_on, color: Colors.green),
-                      SizedBox(width: 6),
-                      Text(
-                        '1000 LKR for an Appointment',
-                        style: TextStyle(color: Colors.green, fontSize: 14),
                       ),
                     ],
                   ),
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.location_on, color: Colors.deepPurple),
+                      Icon(Icons.person, color: Colors.teal),
                       SizedBox(width: 6),
                       Text(
-                        'PetVet Clinic',
+                        'Experience: ${sitter['experience']}',
+                        style: TextStyle(fontSize: 14),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: 8),
+                  Row(
+                    children: [
+                      Icon(Icons.location_on, color: Colors.teal),
+                      SizedBox(width: 6),
+                      Text(
+                        'Distance: ${sitter['distance']}',
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -111,27 +108,27 @@ class VeterinarianDetailPage extends StatelessWidget {
                   SizedBox(height: 16),
 
                   Text(
-                    "Dr. ${vet['name'].split(' ')[1]}, one of the most skilled and experienced veterinarians and the owner of the most convenient animal clinic 'Petz & Vetz'. Our paradise is situated in the heart of the town with a pleasant environment. We are ready to treat your beloved doggos & puppers with love and nourishment.\n\nBook the appointment now!",
+                    "${sitter['name']} is a highly trusted pet sitter offering ${sitter['speciality'].toLowerCase()} for your furry friends. With ${sitter['experience']} of dedication, they provide a safe and loving environment for pets when you're away.\n\nBook now for peace of mind!",
                     style: TextStyle(fontSize: 14, height: 1.4),
                   ),
                 ],
               ),
             ),
 
-            // Book button
+            // Book Button
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // Navigate or show confirmation
+                    // Booking functionality here
                   },
                   icon: Icon(Icons.calendar_today),
                   label: Text("Book an Appointment"),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: const Color.fromARGB(255, 240, 77, 255),
+                    backgroundColor: Colors.teal,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
