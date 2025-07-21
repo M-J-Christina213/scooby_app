@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pet_owner_data.dart'; // To access PetOwnerData.name
 
 class GroomingDetailPage extends StatelessWidget {
   final Map<String, dynamic> groomer;
@@ -60,7 +61,6 @@ class GroomingDetailPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 20),
@@ -104,9 +104,7 @@ class GroomingDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   SizedBox(height: 16),
-
                   Text(
                     "${groomer['name']} is a professional groomer known for providing top-tier ${groomer['speciality'].toLowerCase()} services. With over ${groomer['experience']} of hands-on experience, they ensure your pets are pampered, stylish, and healthy.\n\nBook now to give your furry friend a spa-like experience!",
                     style: TextStyle(fontSize: 14, height: 1.4),
@@ -122,7 +120,39 @@ class GroomingDetailPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // Add future navigation or booking logic here
+                    final ownerName = PetOwnerData.name;
+
+                    final now = DateTime.now();
+                    final bookingTime = '${now.day}/${now.month}/${now.year} at ${now.hour}:${now.minute.toString().padLeft(2, '0')}';
+
+                    final appointmentDateTime = DateTime(now.year, now.month, now.day + 1, 10, 0);
+                    final appointmentTime = '${appointmentDateTime.day}/${appointmentDateTime.month}/${appointmentDateTime.year} at 10:00 AM';
+
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        title: const Text("Booking Confirmed!"),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("✅ Your booking was successful."),
+                            const SizedBox(height: 10),
+                            Text("👤 Pet Owner: $ownerName"),
+                            Text("📅 Booked On: $bookingTime"),
+                            Text("📍 Appointment: $appointmentTime"),
+                            const Text("💰 Amount: LKR 1500"),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: const Text("OK", style: TextStyle(color: Colors.pinkAccent)),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   icon: Icon(Icons.cut),
                   label: Text("Book Grooming Session"),

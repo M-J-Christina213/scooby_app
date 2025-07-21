@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pet_owner_data.dart'; // To access pet owner's name
 
 class PetSitterDetailPage extends StatelessWidget {
   final Map<String, dynamic> sitter;
@@ -60,7 +61,6 @@ class PetSitterDetailPage extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-
                   Row(
                     children: [
                       Icon(Icons.star, color: Colors.orange, size: 20),
@@ -104,9 +104,7 @@ class PetSitterDetailPage extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   SizedBox(height: 16),
-
                   Text(
                     "${sitter['name']} is a highly trusted pet sitter offering ${sitter['speciality'].toLowerCase()} for your furry friends. With ${sitter['experience']} of dedication, they provide a safe and loving environment for pets when you're away.\n\nBook now for peace of mind!",
                     style: TextStyle(fontSize: 14, height: 1.4),
@@ -122,7 +120,39 @@ class PetSitterDetailPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton.icon(
                   onPressed: () {
-                    // Booking functionality here
+                    final ownerName = PetOwnerData.name;
+
+                    final now = DateTime.now();
+                    final bookingTime = '${now.day}/${now.month}/${now.year} at ${now.hour}:${now.minute.toString().padLeft(2, '0')}';
+
+                    final appointmentDateTime = DateTime(now.year, now.month, now.day + 1, 9, 0);
+                    final appointmentTime = '${appointmentDateTime.day}/${appointmentDateTime.month}/${appointmentDateTime.year} at 9:00 AM';
+
+                    showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                        title: const Text("Booking Confirmed!"),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("✅ Your booking was successful."),
+                            const SizedBox(height: 10),
+                            Text("👤 Pet Owner: $ownerName"),
+                            Text("📅 Booked On: $bookingTime"),
+                            Text("📍 Appointment: $appointmentTime"),
+                            const Text("💰 Amount: LKR 2000"),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () => Navigator.of(context).pop(),
+                            child: const Text("OK", style: TextStyle(color: Colors.teal)),
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   icon: Icon(Icons.calendar_today),
                   label: Text("Book an Appointment"),
