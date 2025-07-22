@@ -27,7 +27,7 @@ class _AddPetScreenState extends State<AddPetScreen> {
     );
 
     PetData.pets.insert(0, newPet);
-    print('Pet added: ${newPet.name}');
+('Pet added: ${newPet.name}');
     Navigator.pop(context);
   }
 

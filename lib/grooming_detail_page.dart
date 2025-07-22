@@ -18,7 +18,7 @@ class GroomingDetailPage extends StatelessWidget {
         child: Column(
           children: [
             // Top image
-            Container(
+            SizedBox(
               width: double.infinity,
               child: Image.asset(
                 groomer['image'],
