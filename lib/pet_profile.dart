@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'add_pet.dart';
-import 'pet_owner_data.dart'; // Import the shared data
+import 'pet_owner_data.dart';
 
 class PetOwnerProfilePage extends StatefulWidget {
   const PetOwnerProfilePage({super.key});
@@ -26,8 +26,20 @@ class _PetOwnerProfilePageState extends State<PetOwnerProfilePage> {
     });
 
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Profile saved successfully')),
+      const SnackBar(content: Text('Profile saved successfully')),
     );
+  }
+
+  Future<void> _navigateToAddPet() async {
+    final result = await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddPetScreen()),
+    );
+
+    if (result == true) {
+      // Pet added, return to main page and trigger refresh
+      Navigator.pop(context, true);
+    }
   }
 
   @override
@@ -35,53 +47,50 @@ class _PetOwnerProfilePageState extends State<PetOwnerProfilePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xFF9370DB),
-        title: Text("Pet Owner Profile"),
+        backgroundColor: const Color(0xFF9370DB),
+        title: const Text("Pet Owner Profile"),
       ),
       body: Center(
         child: SingleChildScrollView(
           child: Container(
-            padding: EdgeInsets.all(20),
-            margin: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.all(20),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
             decoration: BoxDecoration(
-              color: Color(0xFFE6E6FA),
+              color: const Color(0xFFE6E6FA),
               borderRadius: BorderRadius.circular(15),
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   'Pet Owner Profile',
                   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 _buildTextField("Name", _nameController),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField("Contact Number", _contactController),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField("Email", _emailController),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 _buildTextField("Address", _addressController),
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    _buildButton("Save", const Color.fromRGBO(166, 133, 255, 1), _saveProfile),
-                    _buildButton("Edit", Color.fromRGBO(166, 133, 255, 1), () {
-                      "Edit profile tapped";
+                    _buildButton("Save", const Color(0xFFA685FF), _saveProfile),
+                    _buildButton("Edit", const Color(0xFFA685FF), () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(content: Text('Edit profile tapped')),
+                      );
                     }),
                     ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => AddPetScreen()),
-                        );
-                      },
+                      onPressed: _navigateToAddPet,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Color(0xFFA685FF),
-                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        backgroundColor: const Color(0xFFA685FF),
+                        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                       ),
-                      child: Text("Add Pet"),
+                      child: const Text("Add Pet"),
                     ),
                   ],
                 ),
@@ -110,7 +119,7 @@ class _PetOwnerProfilePageState extends State<PetOwnerProfilePage> {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: color,
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       ),
       child: Text(text),
     );

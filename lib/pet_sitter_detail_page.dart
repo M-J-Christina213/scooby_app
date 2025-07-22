@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
-import 'pet_owner_data.dart'; // To access PetOwnerData.name
+import 'pet_owner_data.dart'; // To access pet owner's name
 
-class GroomingDetailPage extends StatelessWidget {
-  final Map<String, dynamic> groomer;
+class PetSitterDetailPage extends StatelessWidget {
+  final Map<String, dynamic> sitter;
 
-  const GroomingDetailPage({super.key, required this.groomer});
+  const PetSitterDetailPage({super.key, required this.sitter});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
-        title: Text(groomer['name']),
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: Colors.teal,
+        title: Text(sitter['name']),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -21,7 +21,7 @@ class GroomingDetailPage extends StatelessWidget {
             Container(
               width: double.infinity,
               child: Image.asset(
-                groomer['image'],
+                sitter['image'],
                 height: 240,
                 fit: BoxFit.cover,
               ),
@@ -47,14 +47,14 @@ class GroomingDetailPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    groomer['name'],
+                    sitter['name'],
                     style: TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Text(
-                    groomer['speciality'],
+                    sitter['speciality'],
                     style: TextStyle(
                       fontSize: 16,
                       color: Colors.grey[700],
@@ -66,7 +66,7 @@ class GroomingDetailPage extends StatelessWidget {
                       Icon(Icons.star, color: Colors.orange, size: 20),
                       SizedBox(width: 4),
                       Text(
-                        '${groomer['rating']} (${groomer['reviews']} reviews)',
+                        '${sitter['rating']} (${sitter['reviews']} reviews)',
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -74,10 +74,10 @@ class GroomingDetailPage extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.schedule, size: 20, color: Colors.pink),
+                      Icon(Icons.schedule, size: 20, color: Colors.teal),
                       SizedBox(width: 6),
                       Text(
-                        groomer['schedule'],
+                        sitter['schedule'],
                         style: TextStyle(fontSize: 14, color: Colors.black87),
                       ),
                     ],
@@ -85,10 +85,10 @@ class GroomingDetailPage extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.person, color: Colors.pink),
+                      Icon(Icons.person, color: Colors.teal),
                       SizedBox(width: 6),
                       Text(
-                        'Experience: ${groomer['experience']}',
+                        'Experience: ${sitter['experience']}',
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
@@ -96,17 +96,17 @@ class GroomingDetailPage extends StatelessWidget {
                   SizedBox(height: 8),
                   Row(
                     children: [
-                      Icon(Icons.location_on, color: Colors.pink),
+                      Icon(Icons.location_on, color: Colors.teal),
                       SizedBox(width: 6),
                       Text(
-                        'Distance: ${groomer['distance']}',
+                        'Distance: ${sitter['distance']}',
                         style: TextStyle(fontSize: 14),
                       ),
                     ],
                   ),
                   SizedBox(height: 16),
                   Text(
-                    "${groomer['name']} is a professional groomer known for providing top-tier ${groomer['speciality'].toLowerCase()} services. With over ${groomer['experience']} of hands-on experience, they ensure your pets are pampered, stylish, and healthy.\n\nBook now to give your furry friend a spa-like experience!",
+                    "${sitter['name']} is a highly trusted pet sitter offering ${sitter['speciality'].toLowerCase()} for your furry friends. With ${sitter['experience']} of dedication, they provide a safe and loving environment for pets when you're away.\n\nBook now for peace of mind!",
                     style: TextStyle(fontSize: 14, height: 1.4),
                   ),
                 ],
@@ -125,8 +125,8 @@ class GroomingDetailPage extends StatelessWidget {
                     final now = DateTime.now();
                     final bookingTime = '${now.day}/${now.month}/${now.year} at ${now.hour}:${now.minute.toString().padLeft(2, '0')}';
 
-                    final appointmentDateTime = DateTime(now.year, now.month, now.day + 1, 10, 0);
-                    final appointmentTime = '${appointmentDateTime.day}/${appointmentDateTime.month}/${appointmentDateTime.year} at 10:00 AM';
+                    final appointmentDateTime = DateTime(now.year, now.month, now.day + 1, 9, 0);
+                    final appointmentTime = '${appointmentDateTime.day}/${appointmentDateTime.month}/${appointmentDateTime.year} at 9:00 AM';
 
                     showDialog(
                       context: context,
@@ -142,23 +142,23 @@ class GroomingDetailPage extends StatelessWidget {
                             Text("👤 Pet Owner: $ownerName"),
                             Text("📅 Booked On: $bookingTime"),
                             Text("📍 Appointment: $appointmentTime"),
-                            const Text("💰 Amount: LKR 1500"),
+                            const Text("💰 Amount: LKR 2000"),
                           ],
                         ),
                         actions: [
                           TextButton(
                             onPressed: () => Navigator.of(context).pop(),
-                            child: const Text("OK", style: TextStyle(color: Colors.pinkAccent)),
+                            child: const Text("OK", style: TextStyle(color: Colors.teal)),
                           ),
                         ],
                       ),
                     );
                   },
-                  icon: Icon(Icons.cut),
-                  label: Text("Book Grooming Session"),
+                  icon: Icon(Icons.calendar_today),
+                  label: Text("Book an Appointment"),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(vertical: 16),
-                    backgroundColor: const Color.fromARGB(255, 255, 177, 245),
+                    backgroundColor: Colors.teal,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12),
                     ),
