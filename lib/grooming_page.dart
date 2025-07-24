@@ -11,7 +11,7 @@ class GroomingPage extends StatelessWidget {
       'distance': '1.2 km',
       'experience': '5 years',
       'schedule': 'Monday - Saturday at 9:00 a.m - 6:00 p.m',
-      'image': 'assets/images/pradeep.png',
+      'image': 'assets/images/download (1).jpeg',
     },
     {
       'name': 'Ms. Anjali',
@@ -21,7 +21,7 @@ class GroomingPage extends StatelessWidget {
       'distance': '2.0 km',
       'experience': '6 years',
       'schedule': 'Monday - Friday at 10:00 a.m - 5:00 p.m',
-      'image': 'assets/images/anjali.png',
+      'image': 'assets/images/download.jpeg',
     },
     {
       'name': 'Mr. Roshan',
@@ -31,7 +31,7 @@ class GroomingPage extends StatelessWidget {
       'distance': '2.8 km',
       'experience': '4 years',
       'schedule': 'Tuesday - Sunday at 8:00 a.m - 4:00 p.m',
-      'image': 'assets/images/roshan.png',
+      'image': 'assets/images/images.jpeg',
     },
   ];
 

@@ -21,7 +21,7 @@ class VeterinarianPage extends StatelessWidget {
       'distance': '3.1 km',
       'experience': '8 years',
       'schedule': 'Monday - Friday at 8:00 a.m - 5:00 p.m',
-      'image': 'assets/images/',
+      'image': 'assets/images/veterinarian-holding-rabbit-png-06252024-ng3h2h1t6srlw0bg.png',
 
     },
     {
@@ -32,7 +32,7 @@ class VeterinarianPage extends StatelessWidget {
       'distance': '2.1 km',
       'experience': '6 years',
       'schedule': 'Monday - Friday at 8:00 a.m - 5:00 p.m',
-      'image': 'assets/images/nambuvan.png',
+      'image': 'assets/images/veterinarian-pet-wellness-check-png-avm40-uj57av6fm9utb5jg.png',
     },
   ];
 

@@ -13,7 +13,7 @@ class PetSittersPage extends StatelessWidget {
       'distance': '1.5 km',
       'experience': '3 years',
       'schedule': 'Available on weekdays & weekends',
-      'image': 'assets/images/tharushi.png',
+      'image': 'assets/images/pngtree-pet-sitting-clipart-woman-sitting-with-her-dog-and-plant-cartoon-png-image_12146950.png',
     },
     {
       'name': 'Mr. Nimal',
@@ -23,7 +23,7 @@ class PetSittersPage extends StatelessWidget {
       'distance': '2.2 km',
       'experience': '4 years',
       'schedule': 'Monday - Friday at 9:00 a.m - 5:00 p.m',
-      'image': 'assets/images/nimal.png',
+      'image': 'assets/images/png-transparent-dog-walking-pet-sitting-cat-pet-sitter-child-mammal-carnivoran.png',
     },
     {
       'name': 'Ms. Kaveesha',
@@ -33,7 +33,7 @@ class PetSittersPage extends StatelessWidget {
       'distance': '1.9 km',
       'experience': '5 years',
       'schedule': 'Friday - Sunday (Overnight)',
-      'image': 'assets/images/kaveesha.png',
+      'image': 'assets/images/images.png',
     },
   ];
 
