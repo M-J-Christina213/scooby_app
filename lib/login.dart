@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'register.dart';
-import 'service_provider_register.dart'; // <-- New Import
+import 'service_provider_register.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -12,6 +12,16 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +36,11 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 30),
             const Text(
               'Login',
-              style: TextStyle(fontSize: 35, color: Colors.purpleAccent, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 35,
+                color: Colors.purpleAccent,
+                fontWeight: FontWeight.bold,
+              ),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
@@ -35,9 +49,20 @@ class _LoginScreenState extends State<LoginScreen> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   children: [
-                    _buildTextField('Email', Icons.email, TextInputType.emailAddress),
+                    _buildTextField(
+                      label: 'Email',
+                      icon: Icons.email,
+                      keyboardType: TextInputType.emailAddress,
+                      controller: _emailController,
+                    ),
                     const SizedBox(height: 30),
-                    _buildTextField('Password', Icons.password, TextInputType.text, isPassword: true),
+                    _buildTextField(
+                      label: 'Password',
+                      icon: Icons.password,
+                      keyboardType: TextInputType.text,
+                      isPassword: true,
+                      controller: _passwordController,
+                    ),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
@@ -46,16 +71,26 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
+                              final email = _emailController.text;
+                              final password = _passwordController.text;
+
+                              // 👇 Replace this with actual login logic
+                              ("Email: $email");
+                              ("Password: $password");
+
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Login Successful')),
                               );
+
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(builder: (context) => MainPage()),
                               );
                             }
                           },
-                          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 224, 118, 243)),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: const Color.fromARGB(255, 224, 118, 243),
+                          ),
                           child: const Text('Login', style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -116,10 +151,17 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Widget _buildTextField(String label, IconData icon, TextInputType keyboardType, {bool isPassword = false}) {
+  Widget _buildTextField({
+    required String label,
+    required IconData icon,
+    required TextInputType keyboardType,
+    required TextEditingController controller,
+    bool isPassword = false,
+  }) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
+        controller: controller,
         obscureText: isPassword,
         obscuringCharacter: '*',
         keyboardType: keyboardType,
@@ -133,6 +175,20 @@ class _LoginScreenState extends State<LoginScreen> {
           if (value == null || value.isEmpty) {
             return 'Please enter $label';
           }
+
+          if (label == 'Email') {
+            final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+            if (!emailRegex.hasMatch(value)) {
+              return 'Please enter a valid email';
+            }
+          }
+
+          if (label == 'Password') {
+            if (value.length < 6) {
+              return 'Password must be at least 6 characters';
+            }
+          }
+
           return null;
         },
       ),

@@ -11,7 +11,7 @@ class VeterinarianPage extends StatelessWidget {
       'distance': '2.5 km',
       'experience': '10 years',
       'schedule': 'Monday - Friday at 8:00 a.m - 5:00 p.m',
-      'image': 'assets/images/janaki.png', // Add your images here
+      'image': 'assets/images/small-animal-veterinarian-png-48-iyaazyfgtagdhhq4.png', // Add your images here
     },
     {
       'name': 'Dr. Sambuvan',
@@ -21,7 +21,8 @@ class VeterinarianPage extends StatelessWidget {
       'distance': '3.1 km',
       'experience': '8 years',
       'schedule': 'Monday - Friday at 8:00 a.m - 5:00 p.m',
-      'image': 'assets/images/sambuvan.png',
+      'image': 'assets/images/',
+
     },
     {
       'name': 'Dr. Nambuvan',

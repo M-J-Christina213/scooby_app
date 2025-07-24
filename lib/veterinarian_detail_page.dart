@@ -18,7 +18,7 @@ class VeterinarianDetailPage extends StatelessWidget {
         child: Column(
           children: [
             // Top image
-            Container(
+            SizedBox(
               width: double.infinity,
               child: Image.asset(
                 vet['image'],

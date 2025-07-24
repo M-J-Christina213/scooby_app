@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'vet_groomer.dart';
+import 'main.dart'; // Import MainPage for navigation
 import 'vet_groomer_login.dart'; // <-- Login screen
 
 class RegisterScreen extends StatefulWidget {
@@ -60,7 +60,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                               Navigator.pushReplacement(
                                 context,
-                                MaterialPageRoute(builder: (context) => const VetGroomerScreen()),
+                                MaterialPageRoute(builder: (context) => const MainPage()),
                               );
                             }
                           },
@@ -125,6 +125,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
         keyboardType: keyboardType,
+        obscureText: label == 'Password', // Hide input for password field
         decoration: InputDecoration(
           labelText: label,
           hintText: 'Enter $label',
@@ -132,7 +133,16 @@ class _RegisterScreenState extends State<RegisterScreen> {
           border: const OutlineInputBorder(),
         ),
         validator: (value) {
-          return value == null || value.isEmpty ? 'Please enter $label' : null;
+          if (value == null || value.isEmpty) {
+            return 'Please enter $label';
+          }
+          if (label == 'Email') {
+            final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+            if (!emailRegex.hasMatch(value)) {
+              return 'Please enter a valid email';
+            }
+          }
+          return null;
         },
       ),
     );
