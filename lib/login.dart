@@ -1,27 +1,16 @@
 import 'package:flutter/material.dart';
 import 'main.dart';
 import 'register.dart';
-import 'service_provider_register.dart';
+import 'service_provider_register.dart'; // <-- New Import
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
-
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,33 +25,17 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 30),
             const Text(
               'Login',
-              style: TextStyle(
-                fontSize: 35,
-                color: Colors.purpleAccent,
-                fontWeight: FontWeight.bold,
-              ),
+              style: TextStyle(fontSize: 35, color: Colors.purpleAccent, fontWeight: FontWeight.bold),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 30),
               child: Form(
                 key: _formKey,
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   children: [
-                    _buildTextField(
-                      label: 'Email',
-                      icon: Icons.email,
-                      keyboardType: TextInputType.emailAddress,
-                      controller: _emailController,
-                    ),
+                    _buildTextField('Email', Icons.email, TextInputType.emailAddress),
                     const SizedBox(height: 30),
-                    _buildTextField(
-                      label: 'Password',
-                      icon: Icons.password,
-                      keyboardType: TextInputType.text,
-                      isPassword: true,
-                      controller: _passwordController,
-                    ),
+                    _buildTextField('Password', Icons.password, TextInputType.text, isPassword: true),
                     const SizedBox(height: 30),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 35),
@@ -71,26 +44,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              final email = _emailController.text;
-                              final password = _passwordController.text;
-
-                              // 👇 Replace this with actual login logic
-                              ("Email: $email");
-                              ("Password: $password");
-
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Login Successful')),
                               );
-
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(builder: (context) => MainPage()),
                               );
                             }
                           },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: const Color.fromARGB(255, 224, 118, 243),
-                          ),
+                          style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 224, 118, 243)),
                           child: const Text('Login', style: TextStyle(color: Colors.white)),
                         ),
                       ),
@@ -144,24 +107,31 @@ class _LoginScreenState extends State<LoginScreen> {
                   ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(height: 24),
+              _loading
+                  ? const CircularProgressIndicator(color: Colors.white)
+                  : _PrimaryButton(text: 'Register', onPressed: _register),
+              const SizedBox(height: 12),
+              _GoogleButton(onPressed: () async {
+                Navigator.of(context).pop();
+                // Use same google sign-in as login
+              }),
+              const SizedBox(height: 24),
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('Back to Login', style: TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildTextField({
-    required String label,
-    required IconData icon,
-    required TextInputType keyboardType,
-    required TextEditingController controller,
-    bool isPassword = false,
-  }) {
+  Widget _buildTextField(String label, IconData icon, TextInputType keyboardType, {bool isPassword = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       child: TextFormField(
-        controller: controller,
         obscureText: isPassword,
         obscuringCharacter: '*',
         keyboardType: keyboardType,
@@ -175,23 +145,46 @@ class _LoginScreenState extends State<LoginScreen> {
           if (value == null || value.isEmpty) {
             return 'Please enter $label';
           }
-
-          if (label == 'Email') {
-            final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-            if (!emailRegex.hasMatch(value)) {
-              return 'Please enter a valid email';
-            }
-          }
-
-          if (label == 'Password') {
-            if (value.length < 6) {
-              return 'Password must be at least 6 characters';
-            }
-          }
-
           return null;
         },
       ),
+    );
+  }
+}
+
+class _GoogleButton extends StatelessWidget {
+  const _GoogleButton({required this.onPressed});
+  final VoidCallback onPressed;
+  @override
+  Widget build(BuildContext context) {
+    return OutlinedButton.icon(
+      onPressed: onPressed,
+      style: OutlinedButton.styleFrom(
+        side: const BorderSide(color: Colors.white),
+        foregroundColor: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(14)),
+      ),
+      icon: Image.asset('assets/images/google_logo.png', height: 20),
+      label: const Text('Sign in with Google'),
+    );
+  }
+}
+
+/// Helper to create fade transition route.
+Route _fade(Widget page) => PageRouteBuilder(
+      pageBuilder: (_, __, ___) => page,
+      transitionsBuilder: (_, anim, __, child) => FadeTransition(opacity: anim, child: child),
+    );
+
+/// Placeholder main page - replace with your own app home.
+class MainPage extends StatelessWidget {
+  const MainPage({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Main Page')),
+      body: const Center(child: Text('Logged in!')),
     );
   }
 }

@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "526895335996",
+    "project_id": "scooby-app-102a4",
+    "storage_bucket": "scooby-app-102a4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526895335996:android:6c46312b096d42412dd139",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ_RXvp1vpg-yVHLNNlV2vKQlpctl0pAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526895335996:android:3ce94c3845b072cb2dd139",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_scooby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJ_RXvp1vpg-yVHLNNlV2vKQlpctl0pAY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
