@@ -42,7 +42,7 @@ class GroomingPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text("Grooming Services"),
-        backgroundColor: Colors.pinkAccent,
+        backgroundColor: const Color.fromARGB(255, 228, 156, 238),
       ),
       body: ListView.builder(
         padding: EdgeInsets.all(16),
