@@ -12,7 +12,12 @@
           "package_name": "com.android.application"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDJ_RXvp1vpg-yVHLNNlV2vKQlpctl0pAY"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     },
@@ -31,7 +41,12 @@
           "package_name": "com.example.flutter_application_scooby"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyDJ_RXvp1vpg-yVHLNNlV2vKQlpctl0pAY"
@@ -39,7 +54,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526895335996-stbk1kape2o9m2iue3k6u8d8p140kb3a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }

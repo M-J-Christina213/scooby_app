@@ -4,7 +4,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("com.google.gms:google-services:4.4.0") // Required for Firebase
+        classpath("com.google.gms:google-services:4.4.1") // Required for Firebase
     }
 }
 
