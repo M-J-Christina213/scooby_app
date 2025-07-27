@@ -75,8 +75,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               final password = _passwordController.text;
 
                               // 👇 Replace this with actual login logic
-                              print("Email: $email");
-                              print("Password: $password");
+                              ("Email: $email");
+                              ("Password: $password");
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(content: Text('Login Successful')),
